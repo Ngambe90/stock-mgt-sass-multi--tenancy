@@ -1,0 +1,41 @@
+{
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-19d9692d074-2a303595532269e9": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "saas-app-db",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "5433",
+				"database": "saas-app-db",
+				"url": "jdbc:postgresql://localhost:5433/saas-app-db",
+				"configurationType": "MANUAL",
+				"home": "postgresql-x64-12",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}

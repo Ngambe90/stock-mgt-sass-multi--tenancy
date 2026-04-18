@@ -1,0 +1,42 @@
+{
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-19d9692d074-2a303595532269e9": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "saas-app-db",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "5433",
+				"database": "saas-app-db",
+				"url": "jdbc:postgresql://localhost:5433/saas-app-db",
+				"configurationType": "MANUAL",
+				"home": "postgresql-x64-12",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {"postgres-jdbc-19d9692d074-2a303595532269e9":{"saas-app-db":{"public":{":categories":{"properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202604161505\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"postgres-jdbc-19d9692d074-2a303595532269e9\"\u003e\u003centity id\u003d\"1\" name\u003d\"categories\" fq-name\u003d\"public.categories\" order\u003d\"0\" color-bg\u003d\"255,128,64\" border-width\u003d\"3\" x\u003d\"319\" y\u003d\"90\"\u003e\u003cpath name\u003d\"public\"/\u003e\u003cpath name\u003d\"saas-app-db\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"2\" name\u003d\"products\" fq-name\u003d\"public.products\" order\u003d\"1\" x\u003d\"40\" y\u003d\"40\"\u003e\u003cpath name\u003d\"public\"/\u003e\u003cpath name\u003d\"saas-app-db\"/\u003e\u003c/entity\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"fkog2rp4qthbtt2lfyhfo32lsw9\" fq-name\u003d\"public.products.fkog2rp4qthbtt2lfyhfo32lsw9\" type\u003d\"fk\" pk-ref\u003d\"1\" fk-ref\u003d\"2\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"}}}}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}
