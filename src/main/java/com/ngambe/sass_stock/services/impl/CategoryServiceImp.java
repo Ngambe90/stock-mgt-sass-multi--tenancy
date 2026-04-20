@@ -11,6 +11,7 @@ import com.ngambe.sass_stock.common.PageResponse;
 import com.ngambe.sass_stock.dto.request.CategorieDtoRequest;
 import com.ngambe.sass_stock.dto.response.CategorieDtoResponse;
 import com.ngambe.sass_stock.entities.Categorie;
+import com.ngambe.sass_stock.exception.DuplicateRessourceException;
 import com.ngambe.sass_stock.mapper.CategoryMapper;
 import com.ngambe.sass_stock.repositories.CategorieRepository;
 import com.ngambe.sass_stock.services.CategoryService;
@@ -75,7 +76,7 @@ public class CategoryServiceImp implements CategoryService{
 		Optional<Categorie> category = categorieRepository.findByCategorieNameIgnoreCase(categoryName);
 		if(category.isPresent()) {
 			log.debug("Category already exists");
-			throw new RuntimeException("Category already exists");
+			throw new DuplicateRessourceException("Category already exists");
 		}
 	}
 
