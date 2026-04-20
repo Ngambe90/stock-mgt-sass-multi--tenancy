@@ -16,11 +16,12 @@ import com.ngambe.sass_stock.repositories.CategorieRepository;
 import com.ngambe.sass_stock.services.CategoryService;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@RequiredArgsConstructor @Slf4j
+@RequiredArgsConstructor @Slf4j @Transactional
 public class CategoryServiceImp implements CategoryService{
 
 	private final CategorieRepository categorieRepository;

@@ -18,7 +18,7 @@ public class CategoryMapper {
 	}
 	
 	public CategorieDtoResponse toResponse(final Categorie response) {
-		final int nbProducts = response.getProducts()==null ? 0 : response.getProducts().size();
+		final int nbProducts =0;// response.getProducts()==null ? 0 : response.getProducts().size();
 		return CategorieDtoResponse.builder()
 				.categorieName(response.getCategorieName())
 				.description(response.getDescription())
