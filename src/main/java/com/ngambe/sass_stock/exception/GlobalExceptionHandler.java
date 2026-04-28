@@ -57,7 +57,8 @@ public class GlobalExceptionHandler {
 			final MethodArgumentNotValidException ex,
 			final HttpServletRequest request
 			){
-		log.error("Entity not Found");
+		log.error("Validation failed: {}", ex.getMessage());
+		
 		final List<ErrorResponse.ValidationError> errors = new ArrayList<>();
 		ex.getBindingResult().getAllErrors().forEach(error->{
 			final String fieldName = ((FieldError)error).getField();
@@ -97,6 +98,10 @@ public class GlobalExceptionHandler {
 			return HttpStatus.CONFLICT;
 		}else if(ex instanceof UnauthorizedException) {
 			return HttpStatus.UNAUTHORIZED;
+		}else if(ex instanceof TenantProvisioningException) {
+			return HttpStatus.INTERNAL_SERVER_ERROR;
+		} else if(ex instanceof InvalidRequestException) {
+			return HttpStatus.BAD_REQUEST;
 		}
 		return HttpStatus.BAD_REQUEST;
 	}

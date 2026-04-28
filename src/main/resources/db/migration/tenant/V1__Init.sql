@@ -1,5 +1,5 @@
 
-CREATE TABLE public.categories (
+CREATE TABLE categories (
 	id varchar(255) NOT NULL,
 	created_at timestamp(6) NOT NULL,
 	created_by varchar(255) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE public.categories (
 	CONSTRAINT categorie_name_unique_constraint UNIQUE ("Categorie Name")
 );
 
-CREATE TABLE public.products (
+CREATE TABLE products (
 	id varchar(255) NOT NULL,
 	created_at timestamp(6) NOT NULL,
 	created_by varchar(255) NOT NULL,
@@ -27,10 +27,10 @@ CREATE TABLE public.products (
 	category_id varchar(255) NULL,
 	CONSTRAINT products_pkey PRIMARY KEY (id),
 	CONSTRAINT product_reference_unique_constraint UNIQUE (reference),
-	CONSTRAINT fk_categorie FOREIGN KEY (category_id) REFERENCES public.categories(id)
+	CONSTRAINT fk_categorie FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
-CREATE TABLE public.stock_mvts (
+CREATE TABLE stock_mvts (
 	id varchar(255) NOT NULL,
 	created_at timestamp(6) NOT NULL,
 	created_by varchar(255) NOT NULL,
@@ -44,5 +44,5 @@ CREATE TABLE public.stock_mvts (
 	product_id varchar(255) NULL,
 	CONSTRAINT stock_mvts_pkey PRIMARY KEY (id),
 	CONSTRAINT stock_mvts_type_mvt_check CHECK (((type_mvt)::text = ANY ((ARRAY['IN'::character varying, 'OUT'::character varying])::text[]))),
-	CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES public.products(id)
+	CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES products(id)
 );

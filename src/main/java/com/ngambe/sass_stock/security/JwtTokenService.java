@@ -63,7 +63,7 @@ public class JwtTokenService {
 	
 	 public String generateAccessToken(final String tenantId, final String userId,final String role) {
 		 final Date now= new Date();
-		 final Date expiration = new Date(now.getTime()+this.jwtProperties.getAccessTokenExpiration());
+		 final Date expiration = new Date(System.currentTimeMillis() + this.jwtProperties.getAccessTokenExpiration());
 		 return Jwts.builder()
 				 .subject(userId)
 		 		 .claim("tenant_id", tenantId)

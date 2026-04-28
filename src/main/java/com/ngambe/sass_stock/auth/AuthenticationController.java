@@ -1,24 +1,30 @@
 package com.ngambe.sass_stock.auth;
 
+
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ngambe.sass_stock.auth.service.AuthenticationService;
 import com.ngambe.sass_stock.dto.request.LoginRequest;
+import com.ngambe.sass_stock.dto.request.TenantRegisterRequest;
 import com.ngambe.sass_stock.dto.response.LoginResponse;
+import com.ngambe.sass_stock.services.TenantService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@RequiredArgsConstructor
+@RequiredArgsConstructor @Slf4j 
 public class AuthenticationController {
 
 	private final AuthenticationService authenticationService;
+	private final TenantService tenantService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> login(@Valid @RequestBody final LoginRequest request){
@@ -27,4 +33,13 @@ public class AuthenticationController {
 		
 		return ResponseEntity.ok(response);
 	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<Void> register(@Valid  @RequestBody final TenantRegisterRequest request){
+		 
+		this.tenantService.TenantRegister(request);
+		
+		return ResponseEntity.ok().build();
+	}
+	
 }

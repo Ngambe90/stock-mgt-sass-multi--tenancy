@@ -1,0 +1,42 @@
+CREATE TABLE tenants (
+	deleted bool NOT NULL,
+	created_at timestamp(6) NOT NULL,
+	updated_at timestamp(6) NULL,
+	admin_email varchar(255) NOT NULL,
+	admin_full_name varchar(255) NOT NULL,
+	admin_password varchar(255) NOT NULL,
+	admin_username varchar(255) NOT NULL,
+	company_code varchar(255) NOT NULL,
+	company_email varchar(255) NOT NULL,
+	company_name varchar(255) NOT NULL,
+	company_status varchar(255) NOT NULL,
+	id varchar(255) NOT NULL,
+	CONSTRAINT tenants_admin_email_key UNIQUE (admin_email),
+	CONSTRAINT tenants_admin_username_key UNIQUE (admin_username),
+	CONSTRAINT tenants_company_code_key UNIQUE (company_code),
+	CONSTRAINT tenants_company_email_key UNIQUE (company_email),
+	CONSTRAINT tenants_company_status_check CHECK (((company_status)::text = ANY ((ARRAY['PENDING'::character varying, 'ACTIVE'::character varying, 'SUSPENDED'::character varying, 'INACTIVE'::character varying])::text[]))),
+	CONSTRAINT tenants_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+	deleted bool NOT NULL,
+	enabled bool NULL,
+	created_at timestamp(6) NOT NULL,
+	updated_at timestamp(6) NULL,
+	created_by varchar(255) NOT NULL,
+	email varchar(255) NOT NULL,
+	first_name varchar(255) NOT NULL,
+	id varchar(255) NOT NULL,
+	last_name varchar(255) NOT NULL,
+	"password" varchar(255) NOT NULL,
+	"role" varchar(255) NOT NULL,
+	tenant_id varchar(255) NULL,
+	updated_by varchar(255) NULL,
+	username varchar(255) NOT NULL,
+	CONSTRAINT users_email_key UNIQUE (email),
+	CONSTRAINT users_pkey PRIMARY KEY (id),
+	CONSTRAINT users_role_check CHECK (((role)::text = ANY ((ARRAY['ROLE_PLATFORM_ADMIN'::character varying, 'ROLE_COMPANY_ADMIN'::character varying, 'ROLE_ADMINISTRATOR'::character varying, 'ROLE_USER'::character varying, 'ROLE_SALE_OPERATOR'::character varying])::text[]))),
+	CONSTRAINT users_username_key UNIQUE (username),
+	CONSTRAINT fk_tenant_id FOREIGN KEY (tenant_id) REFERENCES tenants(id)
+);

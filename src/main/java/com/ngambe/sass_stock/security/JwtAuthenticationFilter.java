@@ -6,13 +6,13 @@ import java.util.Collections;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.ngambe.sass_stock.config.TenantContext;
+import com.ngambe.sass_stock.config.TenantSchemaResolver;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 	
 	private final JwtTokenService jwtTokenService;
+	private final TenantSchemaResolver tenantSchemaResolver;
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -45,7 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 				if(tenantId !=null) {
 					//stocker le tenant ID et le schema
 					TenantContext.setCurrentTenant(tenantId);
-					final String schemaName ="";//todo resolve schemaName
+					final String schemaName =this.tenantSchemaResolver.revolveTenantSchema(tenantId);
 					TenantContext.setCurrentSchema(schemaName);
 				}
 				final SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);

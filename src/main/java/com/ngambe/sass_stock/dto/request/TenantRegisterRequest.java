@@ -1,0 +1,28 @@
+package com.ngambe.sass_stock.dto.request;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+public class TenantRegisterRequest {
+	
+	@NotBlank(message = "company name should not be empty")
+	private String companyName;
+	@NotBlank(message = "company code should not be empty")
+	private String companyCode;
+	@NotBlank(message = "company email should not be empty")	
+	private String email;
+	@NotBlank(message = "Admin full name should not be empty")	
+	private String adminFullName;
+	@NotBlank(message = "Admin email should not be empty")
+	private String adminEmail;
+	@NotBlank(message = "Admin username  should not be empty")
+	private String adminUsername;
+	@NotBlank(message = "Admin Password should not be empty")
+	private String adminPassword;
+
+}

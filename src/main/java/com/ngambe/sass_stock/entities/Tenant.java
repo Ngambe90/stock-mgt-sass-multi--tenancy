@@ -23,7 +23,7 @@ public class Tenant extends AbstractEntity{
 	private String companyName;
 	
 	@Column(name = "company_code", nullable = false, unique = true)
-	private String comapnyCode;
+	private String companyCode;
 	
 	@Column(name = "company_email", nullable = false, unique = true)
 	private String email;
@@ -42,7 +42,7 @@ public class Tenant extends AbstractEntity{
 	@Column(name = "admin_username", nullable = false, unique = true)
 	private String adminUsername;
 	
-	@Column(name = "admin_email", nullable = false)
+	@Column(name = "admin_password", nullable = false)
 	private String adminPassword;
 	
 }
