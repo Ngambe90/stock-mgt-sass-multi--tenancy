@@ -19,12 +19,14 @@ import com.ngambe.sass_stock.dto.response.UserResponse;
 import com.ngambe.sass_stock.services.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
+@Tag(name="User", description = "User API")
 public class UserController {
 
 	private final UserService userService;

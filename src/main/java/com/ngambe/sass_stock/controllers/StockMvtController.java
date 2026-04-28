@@ -17,11 +17,13 @@ import com.ngambe.sass_stock.dto.response.StockMvtDtoResponse;
 import com.ngambe.sass_stock.services.StockMvtService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController @RequiredArgsConstructor @RequestMapping("api/v1/stockmvts")
+@Tag(name="Stock Mvt", description = "Stock Mvt API")
 public class StockMvtController {
 
 	private final StockMvtService mvtService;

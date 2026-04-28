@@ -14,6 +14,7 @@ import com.ngambe.sass_stock.dto.request.TenantRegisterRequest;
 import com.ngambe.sass_stock.dto.response.LoginResponse;
 import com.ngambe.sass_stock.services.TenantService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor @Slf4j 
+@Tag(name="Authentication", description = "Authentication API")
 public class AuthenticationController {
 
 	private final AuthenticationService authenticationService;

@@ -16,10 +16,12 @@ import com.ngambe.sass_stock.dto.request.CategorieDtoRequest;
 import com.ngambe.sass_stock.dto.response.CategorieDtoResponse;
 import com.ngambe.sass_stock.services.CategoryService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController @RequiredArgsConstructor @RequestMapping("api/v1/categories")
+@Tag(name="Category", description = "Category API")
 public class CategoryController {
 
 	private final CategoryService categoryService;

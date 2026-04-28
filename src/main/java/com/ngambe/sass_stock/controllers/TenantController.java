@@ -13,6 +13,7 @@ import com.ngambe.sass_stock.common.PageResponse;
 import com.ngambe.sass_stock.dto.response.TenantResponse;
 import com.ngambe.sass_stock.services.TenantService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/api/v1/tenants")
+@Tag(name="Tenant", description = "Tenant API")
 public class TenantController {
 
 	private final TenantService tenantService;

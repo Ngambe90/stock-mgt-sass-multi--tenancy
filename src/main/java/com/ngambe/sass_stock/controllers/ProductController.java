@@ -17,11 +17,13 @@ import com.ngambe.sass_stock.dto.response.ProductDtoResponse;
 import com.ngambe.sass_stock.services.ProductService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RestController @RequiredArgsConstructor @RequestMapping("api/v1/products")
+@Tag(name="Product", description = "Product API")
 public class ProductController {
 
 	private final ProductService productService;
